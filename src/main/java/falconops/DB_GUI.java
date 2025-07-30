@@ -243,6 +243,7 @@ public class DB_GUI {
             String name = nameField.getText().trim();
             String status = statusField.getText().trim();
             if(id.isEmpty() || name.isEmpty() || status.isEmpty()) {
+                SoundPlayer.play("Sounds/All_fields_required.wav", false);
                 showAlert(Alert.AlertType.WARNING, "Validation Error", "All fields are required!");
                 return;
             }
@@ -253,6 +254,7 @@ public class DB_GUI {
         deleteBtn.setOnAction(e -> {
             String id = idField.getText().trim();
             if (id.isEmpty()) {
+                SoundPlayer.play("Sounds/Please_enter_AircrafID.wav", false);
                 showAlert(Alert.AlertType.WARNING, "Validation Error", "Please enter Aircraft ID to delete.");
                 return;
             }
@@ -319,6 +321,7 @@ public class DB_GUI {
             String name = nameField.getText().trim();
             String status = statusField.getText().trim();
             if(id.isEmpty() || name.isEmpty() || status.isEmpty()) {
+                SoundPlayer.play("Sounds/All_fields_required.wav", false);
                 showAlert(Alert.AlertType.WARNING, "Validation Error", "All fields are required!");
                 return;
             }
@@ -330,6 +333,7 @@ public class DB_GUI {
         deleteBtn.setOnAction(e -> {
             String id = idField.getText().trim();
             if (id.isEmpty()) {
+                SoundPlayer.play("Sounds/Please_enter_PilotID.wav", false);
                 showAlert(Alert.AlertType.WARNING, "Validation Error", "Please enter Pilot ID to delete.");
                 return;
             }
@@ -373,6 +377,7 @@ public class DB_GUI {
             ps.setString(3, status.trim());
             int result = ps.executeUpdate();
             if (result == 1) {
+                SoundPlayer.play("Sounds/Aircraft_added_succe.wav", false);
                 showAlert(Alert.AlertType.INFORMATION, "System Update", "Aircraft added successfully.");
             }
         } catch (Exception e) {
@@ -387,8 +392,10 @@ public class DB_GUI {
             ps.setString(1, id.trim()); //added trim here to remove spaces from the input
             int result = ps.executeUpdate();
             if (result == 1) {
+                SoundPlayer.play("Sounds/Aircraft_deleted_suc.wav", false);
                 showAlert(Alert.AlertType.INFORMATION, "System Update", "Aircraft deleted successfully.");
             } else {
+                SoundPlayer.play("Sounds/No_aircraft_found.wav", false);
                 showAlert(Alert.AlertType.WARNING, "Delete Failed", "No aircraft found with ID: " + id);
             }
         } catch (Exception e) {
@@ -405,6 +412,7 @@ public class DB_GUI {
             ps.setString(3, status.trim());
             int result = ps.executeUpdate();
             if (result == 1) {
+                SoundPlayer.play("Sounds/Pilot_added_success.wav", false);
                 showAlert(Alert.AlertType.INFORMATION, "System Update", "Pilot added successfully.");
             }
         } catch (Exception e) {
@@ -419,8 +427,10 @@ public class DB_GUI {
             ps.setString(1, id.trim()); //added trim here to remove spaces from the input
             int result = ps.executeUpdate();
             if (result == 1) {
+                SoundPlayer.play("Sounds/Pilot_deleted_succes.wav", false);
                 showAlert(Alert.AlertType.INFORMATION, "System Update", "Pilot deleted successfully.");
             } else {
+                SoundPlayer.play("Sounds/No_pilot_found.wav", false);
                 showAlert(Alert.AlertType.WARNING, "Delete Failed", "No pilot found with ID: " + id);
             }
         } catch (Exception e) {
