@@ -99,6 +99,7 @@ public class Linking extends DB_GUI {
             String selectedAircraft = aircraftCombo.getValue();
             String selectedPilot = pilotCombo.getValue();
             if (selectedAircraft == null || selectedPilot == null) {
+                SoundPlayer.play("Sounds/Please_select_both.wav", false);
                 showAlert(Alert.AlertType.WARNING, "Selection Error", "Please select both an aircraft and a pilot.");
                 return;
             }
