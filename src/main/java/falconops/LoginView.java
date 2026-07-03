@@ -27,31 +27,50 @@ public class LoginView {
     public LoginView(LoginController controller) {
         this.controller = controller;
 
-        // Main container (Black Background)
+        // Main container 
         root = new VBox(20);
         root.setAlignment(Pos.CENTER);
         root.setPadding(new Insets(25));
-        root.setStyle("-fx-background-color: #000000;");
+        root.setStyle(
+                "-fx-background-color: #000000; " +
+                        "-fx-background-image: url('falconOpsIconN.jpg'); " +
+                        "-fx-background-size: contain; " +
+                        "-fx-background-position: center; " +
+                        "-fx-background-repeat: no-repeat;"
+        );
 
-        // Header text (Dark Green #135A0E)
+        // Circular container for login form
+        VBox circleContainer = new VBox(20);
+        circleContainer.setAlignment(Pos.CENTER);
+        circleContainer.setPadding(new Insets(30));
+        circleContainer.setMaxSize(350, 350); 
+
+        // Circular styling with black background and border
+        circleContainer.setStyle(
+                "-fx-background-color: #000000; " +
+                        "-fx-background-radius: 175; " +
+                        "-fx-border-color: #135A0E; " +
+                        "-fx-border-width: 3px; " +
+                        "-fx-border-radius: 175; "
+        );
+
+        
         Text headerText = new Text("");
         headerText.setFont(Font.font("Courier New", FontWeight.BOLD, 24));
         headerText.setFill(Color.web("#135A0E"));
 
-        // Form container (GridPane)
+        // Form container 
         GridPane formGrid = new GridPane();
         formGrid.setAlignment(Pos.CENTER);
         formGrid.setHgap(15);
         formGrid.setVgap(15);
         formGrid.setPadding(new Insets(20));
 
-        // Labels (Dark Green #135A0E)
         Label userLabel = new Label("Username:");
         userLabel.setStyle("-fx-text-fill: #135A0E; -fx-font-weight: bold;");
         Label passLabel = new Label("Password:");
         passLabel.setStyle("-fx-text-fill: #135A0E; -fx-font-weight: bold;");
 
-        // Text Fields (Black with Dark Green Border, Red Input Text)
         usernameField = new TextField();
         usernameField.setStyle(
                 "-fx-background-color: black; " +
@@ -70,11 +89,9 @@ public class LoginView {
                         "-fx-prompt-text-fill: #555555;"
         );
 
-        // Error Label (Red)
         errorLabel = new Label();
         errorLabel.setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
 
-        // Login Button (Hover Effect: Green BG + Black Text)
         Button loginButton = new Button("Log In");
         loginButton.setStyle(
                 "-fx-background-color: black; " +
@@ -84,11 +101,10 @@ public class LoginView {
                         "-fx-font-weight: bold;"
         );
 
-        // Hover Effect
         loginButton.setOnMouseEntered(e -> {
             loginButton.setStyle(
-                    "-fx-background-color: #135A0E; " + // Green BG on hover
-                            "-fx-text-fill: black; " +          // Black text on hover
+                    "-fx-background-color: #135A0E; " + 
+                            "-fx-text-fill: black; " +   
                             "-fx-border-color: #135A0E; " +
                             "-fx-border-width: 2px; " +
                             "-fx-font-weight: bold;"
@@ -97,8 +113,8 @@ public class LoginView {
 
         loginButton.setOnMouseExited(e -> {
             loginButton.setStyle(
-                    "-fx-background-color: black; " +  // Default: Black BG
-                            "-fx-text-fill: #135A0E; " +      // Default: Green text
+                    "-fx-background-color: black; " + 
+                            "-fx-text-fill: #135A0E; " +   
                             "-fx-border-color: #135A0E; " +
                             "-fx-border-width: 2px; " +
                             "-fx-font-weight: bold;"
@@ -115,15 +131,13 @@ public class LoginView {
             }
         });
 
-        // Add components to form
         formGrid.add(userLabel, 0, 0);
         formGrid.add(usernameField, 1, 0);
         formGrid.add(passLabel, 0, 1);
         formGrid.add(passwordField, 1, 1);
         formGrid.add(loginButton, 1, 2);
-        formGrid.add(errorLabel, 0, 3, 2, 1); // Span 2 columns
+        formGrid.add(errorLabel, 0, 3, 2, 1);
 
-        // Add header and form to root
         root.getChildren().addAll(headerText, formGrid);
     }
 
