@@ -10,7 +10,7 @@ Built as a portfolio project to practice JavaFX UI development, event-driven ani
 ![Maven](https://img.shields.io/badge/Build-Maven-red)
 
 ## Demo
-![Demo Video]([https://www.linkedin.com/posts/javeria-razzaq-782765312_java-javafx-oop-ugcPost-7355999862007488513-H8kS/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE99gBIBSf4OuVvduR-44fG7YNPJ_5jgfj4](https://www.linkedin.com/feed/update/urn:li:activity:7355999885348810752/))
+![Demo Video](https://www.linkedin.com/feed/update/urn:li:activity:7355999885348810752/)
 
 
 ## Features
