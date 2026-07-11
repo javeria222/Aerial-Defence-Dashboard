@@ -10,24 +10,8 @@ Built as a portfolio project to practice JavaFX UI development, event-driven ani
 ![Maven](https://img.shields.io/badge/Build-Maven-red)
 
 ## Demo
+![Demo Video](https://www.linkedin.com/posts/javeria-razzaq-782765312_java-javafx-oop-ugcPost-7355999862007488513-H8kS/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE99gBIBSf4OuVvduR-44fG7YNPJ_5jgfj4)
 
-<!--
-Add screenshots or a short GIF here. Recommended shots:
-  1. Login screen
-  2. Radar view mid-sweep, showing blips
-  3. The unauthorized-aircraft alert popup
-  4. Aircraft/Pilot entry panels
-
-Save images to a `screenshots/` folder in the repo root, then reference them like:
-  ![Radar view](screenshots/radar-view.png)
-
-A short GIF of the radar sweep detecting an unauthorized blip is the single
-most compelling thing you can add here — it's the feature that's hardest to
-convey in text and looks the most impressive in motion.
--->
-
-![Radar view](screenshots/radar-view.png)
-![Login screen](screenshots/login.png)
 
 ## Features
 
@@ -77,6 +61,7 @@ AerialDefenceDashboard/
     │   └── SpaceInvaders.java       # Bonus mini-game
     └── resources/
         ├── falconOpsIcon.jpeg
+        ├── falconOpsIconN.jpeg
         └── Sounds/                  # Buzz, match success, mission failed, victory
 ```
 
@@ -89,16 +74,6 @@ AerialDefenceDashboard/
 
 Maven itself doesn't need to be installed separately — this project includes the Maven Wrapper (`mvnw`), which downloads and manages the correct Maven version automatically.
 
-### 1. Set up the database
-
-Run [`schema.sql`](schema.sql) against your local MySQL instance:
-
-```bash
-mysql -u root -p < schema.sql
-```
-
-This creates the `falconops` database, the `Aircraft` and `Pilot` tables, and the `falcon_admin` DB user the app connects as.
-
 ### 2. Configure the connection (if needed)
 
 Connection details are currently hardcoded in `DB_GUI.getConnection()`:
@@ -109,28 +84,12 @@ String username = "falcon_admin";
 String password = "1234";
 ```
 
-Update these if your local MySQL setup differs.
-
 ### 3. Build and run
 
 ```bash
 ./mvnw clean javafx:run
 ```
 
-> **Note:** Running via `mvnw` is the reliable way to launch this app. If you try to run `LoginController` directly from your IDE's Run button instead, you'll likely hit `Error: JavaFX runtime components are missing`. This happens because `LoginController` extends `javafx.application.Application` directly, and launching an `Application` subclass straight from the classpath (without a Java module system) triggers a JavaFX bootstrap check that fails. To make the IDE Run button work too, add a small launcher class that doesn't extend `Application`:
->
-> ```java
-> // src/main/java/falconops/Launcher.java
-> package falconops;
->
-> public class Launcher {
->     public static void main(String[] args) {
->         LoginController.main(args);
->     }
-> }
-> ```
->
-> Then run `Launcher` instead of `LoginController` from your IDE.
 
 ### 4. Log in
 
